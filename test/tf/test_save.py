@@ -7,8 +7,9 @@ np.random.seed(1)
 
 # fake data
 x = np.linspace(-1, 1, 100)[:, np.newaxis]  # shape (100, 1)
-noise = np.random.normal(0, 0.1, size=x.shape)
-y = np.power(x, 2) + noise  # shape (100, 1) + some noise
+# noise = np.random.normal(0, 0.1, size=x.shape)
+y = np.power(x, 2)  # shape (100, 1) + some noise
+SESS_SAVE_PATH = "d:/temp/sess_store/1"
 
 
 def save():
@@ -29,15 +30,18 @@ def save():
     for step in range(100):  # train
         sess.run(train_op, {tf_x: x, tf_y: y})
 
-    saver.save(sess, 'params', write_meta_graph=False)  # meta_graph is not recommended
+    saver.save(sess, SESS_SAVE_PATH, write_meta_graph=False)  # meta_graph is not recommended
 
     # plotting
     pred, l = sess.run([o, loss], {tf_x: x, tf_y: y})
     plt.figure(1, figsize=(10, 5))
-    plt.subplot(121)
+    # plt.subplot(121)
     plt.scatter(x, y)
     plt.plot(x, pred, 'r-', lw=5)
     plt.text(-1, 1.2, 'Save Loss=%.4f' % l, fontdict={'size': 15, 'color': 'red'})
+    print("to show image")
+    plt.show()
 
 
-save()
+if __name__ == "__main__":
+    save()

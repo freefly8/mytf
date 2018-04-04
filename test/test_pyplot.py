@@ -39,6 +39,29 @@ def test_figure():
     plt.show()
 
 
+def test_text():
+    x = np.arange(-10, 11, 1)
+    y = x ** 2
+
+    plt.plot(x, y)
+
+    # 第一个参数是x轴坐标
+    # 第二个参数是y轴坐标
+    # 第三个参数是要显式的内容
+    # alpha 设置字体的透明度
+    # family 设置字体
+    # size 设置字体的大小
+    # style 设置字体的风格
+    # wight 字体的粗细
+    # bbox 给字体添加框，alpha 设置框体的透明度， facecolor 设置框体的颜色
+    plt.text(-3, 20, "function: y = x * x", size=15, alpha=0.2)
+    plt.text(-3, 40, "function: y = x * x", size=15, \
+             family="fantasy", color="r", style="italic", weight="light", \
+             bbox=dict(facecolor="r", alpha=0.2))
+
+    plt.show()
+
+
 def test_plot():
     x = np.linspace(0, 10, 100)
     y = np.sin(x)
@@ -47,6 +70,36 @@ def test_plot():
     plt.plot(x, y, label="$sin(x)$", color="r", linestyle="dashed",
              marker="o")
     plt.plot(x, z, "b--", label="$cos(x)$")
+    plt.xlabel("X")
+    plt.ylabel("y")
+    plt.title("test by zyy")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+
+def test_plot2():
+    y = [1, 3, 4, 7, 5, 6, 9, 10]
+    x = [1, 2, 4, 7, 5, 6, 9, 10]
+    plt.plot(x, y, label="test", color="r", linestyle="dashed",
+             marker="o")
+    plt.xlabel("X")
+    plt.ylabel("y")
+    plt.title("test by zyy")
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+
+def test_plot3():
+    y = [1, 3, 4, 7, 5, 6, 9, 10]
+    x = [1, 2, 4, 7, 5, 6, 9, 10]
+    z = [2, 4, 6, 8, 9, 10, 11, 12]
+    plt.plot(x, y, label="test", color="r", linestyle="dashed",
+             marker="o")
+    plt.plot(z, color="b", linestyle="dashed",
+             marker="o")
+
     plt.xlabel("X")
     plt.ylabel("y")
     plt.title("test by zyy")
@@ -181,11 +234,13 @@ def test_drow_bar():
 if __name__ == "__main__":
     # test_set_params()
     # test_figure()
-    # test_plot()
+    test_plot3()
     # test_set()
     # test_scatter()
+    # 添加文字
+    # test_text()
 
     #     画圆
     # test_drow_yuan2()
     #     画直方图
-    test_drow_bar()
+    # test_drow_bar()
